@@ -20,7 +20,7 @@ def binary_search(arr, x):
         else:
             high = mid - 1
             upper_border = arr[mid]
-            
+        # повертаємо кількість ітерацій та верхню межу
     return (iterations, upper_border)
  
 
