@@ -91,3 +91,9 @@ def rabin_karp_search(main_string, substring):
 def measure_time(search_func, text, pattern):
     timer = timeit.Timer(lambda: search_func(text, pattern))
     return timer.timeit(number=10)
+
+# Reading files
+with open("/Users/ivalextar/Desktop/GoIT-PROJECTS/goit_algo/goit-algo-hw-05/hw5_3_docs/стаття 1.txt", "r", encoding="utf-8") as f:
+    article1 = f.read()
+with open("/Users/ivalextar/Desktop/GoIT-PROJECTS/goit_algo/goit-algo-hw-05/hw5_3_docs/стаття 2 (1).txt", "r", encoding="utf-8") as f:
+    article2 = f.read()
