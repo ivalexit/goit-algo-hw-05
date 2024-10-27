@@ -88,3 +88,6 @@ def rabin_karp_search(main_string, substring):
 
 
 # Time measure function
+def measure_time(search_func, text, pattern):
+    timer = timeit.Timer(lambda: search_func(text, pattern))
+    return timer.timeit(number=10)
