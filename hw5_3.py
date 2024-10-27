@@ -1,6 +1,8 @@
+import timeit
+
 # Boyer Moore algorithm
 def build_shift_table(pattern):
-    """Створити таблицю зсувів для алгоритму Боєра-Мура."""
+   
     table = {}
     length = len(pattern)
     for index, char in enumerate(pattern[:-1]):
@@ -21,7 +23,7 @@ def boyer_moore_search(text, pattern):
     return -1
 
 
-# 
+# Knuth Morris Pratt
 def compute_lps(pattern):
     lps = [0] * len(pattern)
     length = 0
@@ -97,3 +99,28 @@ with open("/Users/ivalextar/Desktop/GoIT-PROJECTS/goit_algo/goit-algo-hw-05/hw5_
     article1 = f.read()
 with open("/Users/ivalextar/Desktop/GoIT-PROJECTS/goit_algo/goit-algo-hw-05/hw5_3_docs/стаття 2 (1).txt", "r", encoding="utf-8") as f:
     article2 = f.read()
+
+# Test substrings
+
+existing_substr = "елемент"
+non_existing_substr = "єнотик"
+
+print("Article 1:")
+print(f"Boyer Moore (existing): {measure_time(boyer_moore_search, article1, existing_substr)} sec")
+print(f"Boyer Moore (non existing): {measure_time(boyer_moore_search, article1, non_existing_substr)} sec")
+
+print(f"Knuth Morris Pratt (existing): {measure_time(kmp_search, article1, existing_substr)} sec")
+print(f"Knuth Morris Pratt (non existing): {measure_time(kmp_search, article1, non_existing_substr)} sec")
+
+print(f"Rabin Karp (existing): {measure_time(rabin_karp_search, article1, existing_substr)} sec")
+print(f"Rabin Karp Pratt (non existing): {measure_time(rabin_karp_search, article1, non_existing_substr)} sec")
+
+print("Article 2:")
+print(f"Boyer Moore (existing): {measure_time(boyer_moore_search, article2, existing_substr)} sec")
+print(f"Boyer Moore (non existing): {measure_time(boyer_moore_search, article2, non_existing_substr)} sec")
+
+print(f"Knuth Morris Pratt (existing): {measure_time(kmp_search, article2, existing_substr)} sec")
+print(f"Knuth Morris Pratt (non existing): {measure_time(kmp_search, article2, non_existing_substr)} sec")
+
+print(f"Rabin Karp (existing): {measure_time(rabin_karp_search, article2, existing_substr)} sec")
+print(f"Rabin Karp Pratt (non existing): {measure_time(rabin_karp_search, article2, non_existing_substr)} sec")
