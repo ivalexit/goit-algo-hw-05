@@ -106,21 +106,51 @@ existing_substr = "елемент"
 non_existing_substr = "єнотик"
 
 print("Article 1:")
-print(f"Boyer Moore (existing): {measure_time(boyer_moore_search, article1, existing_substr)} sec")
-print(f"Boyer Moore (non existing): {measure_time(boyer_moore_search, article1, non_existing_substr)} sec")
+print(f"Boyer Moore (existing): {measure_time(boyer_moore_search, article1, existing_substr):.5f} sec")
+print(f"Boyer Moore (non existing): {measure_time(boyer_moore_search, article1, non_existing_substr):.5f} sec")
 
-print(f"Knuth Morris Pratt (existing): {measure_time(kmp_search, article1, existing_substr)} sec")
-print(f"Knuth Morris Pratt (non existing): {measure_time(kmp_search, article1, non_existing_substr)} sec")
+print(f"Knuth Morris Pratt (existing): {measure_time(kmp_search, article1, existing_substr):.5f} sec")
+print(f"Knuth Morris Pratt (non existing): {measure_time(kmp_search, article1, non_existing_substr):.5f} sec")
 
-print(f"Rabin Karp (existing): {measure_time(rabin_karp_search, article1, existing_substr)} sec")
-print(f"Rabin Karp Pratt (non existing): {measure_time(rabin_karp_search, article1, non_existing_substr)} sec")
+print(f"Rabin Karp (existing): {measure_time(rabin_karp_search, article1, existing_substr):.5f} sec")
+print(f"Rabin Karp Pratt (non existing): {measure_time(rabin_karp_search, article1, non_existing_substr):.5f} sec")
 
 print("Article 2:")
-print(f"Boyer Moore (existing): {measure_time(boyer_moore_search, article2, existing_substr)} sec")
-print(f"Boyer Moore (non existing): {measure_time(boyer_moore_search, article2, non_existing_substr)} sec")
+print(f"Boyer Moore (existing): {measure_time(boyer_moore_search, article2, existing_substr):.5f} sec")
+print(f"Boyer Moore (non existing): {measure_time(boyer_moore_search, article2, non_existing_substr):.5f} sec")
 
-print(f"Knuth Morris Pratt (existing): {measure_time(kmp_search, article2, existing_substr)} sec")
-print(f"Knuth Morris Pratt (non existing): {measure_time(kmp_search, article2, non_existing_substr)} sec")
+print(f"Knuth Morris Pratt (existing): {measure_time(kmp_search, article2, existing_substr):.5f} sec")
+print(f"Knuth Morris Pratt (non existing): {measure_time(kmp_search, article2, non_existing_substr):.5f} sec")
 
-print(f"Rabin Karp (existing): {measure_time(rabin_karp_search, article2, existing_substr)} sec")
-print(f"Rabin Karp Pratt (non existing): {measure_time(rabin_karp_search, article2, non_existing_substr)} sec")
+print(f"Rabin Karp (existing): {measure_time(rabin_karp_search, article2, existing_substr):.5f} sec")
+print(f"Rabin Karp Pratt (non existing): {measure_time(rabin_karp_search, article2, non_existing_substr):.5f} sec")
+
+# Store execution time results for each algorithm
+time_boyer_moore_real = measure_time(boyer_moore_search, article1, existing_substr)
+time_boyer_moore_fake = measure_time(boyer_moore_search, article1, non_existing_substr)
+time_kmp_real = measure_time(kmp_search, article1, existing_substr)
+time_kmp_fake = measure_time(kmp_search, article1, non_existing_substr)
+time_rabin_karp_real = measure_time(rabin_karp_search, article1, existing_substr)
+time_rabin_karp_fake = measure_time(rabin_karp_search, article1, non_existing_substr)
+
+# Generate conclusions in markdown format
+summary = f"""
+# Comparison of Substring Search Algorithm Efficiency
+
+| Algorithm           | Existing Substring (sec) | Non-Existing Substring (sec) |
+|---------------------|--------------------------|------------------------------|
+| Boyer-Moore         | {time_boyer_moore_real:.5f}         | {time_boyer_moore_fake:.5f}         |
+| Knuth-Morris-Pratt  | {time_kmp_real:.5f}               | {time_kmp_fake:.5f}              |
+| Rabin-Karp          | {time_rabin_karp_real:.5f}         | {time_rabin_karp_fake:.5f}        |
+
+## Conclusions:
+- Fastest algorithm for the existing substring: {min(time_boyer_moore_real, time_kmp_real, time_rabin_karp_real):.5f} sec.
+- Fastest algorithm for the non-existing substring: {min(time_boyer_moore_fake, time_kmp_fake, time_rabin_karp_fake):.5f} sec.
+- Overall most efficient algorithm for the given texts: {min(time_boyer_moore_real + time_boyer_moore_fake, time_kmp_real + time_kmp_fake, time_rabin_karp_real + time_rabin_karp_fake):.5f} sec.
+"""
+
+# Write conclusions to a markdown file
+with open("summary.md", "w", encoding="utf-8") as f:
+    f.write(summary)
+
+print("Conclusions written to summary.md")
