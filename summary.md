@@ -3,11 +3,11 @@
 
 | Algorithm           | Existing Substring (sec) | Non-Existing Substring (sec) |
 |---------------------|--------------------------|------------------------------|
-| Boyer-Moore         | 0.00118         | 0.00557         |
-| Knuth-Morris-Pratt  | 0.00241               | 0.00962              |
-| Rabin-Karp          | 0.00575         | 0.02328        |
+| Boyer-Moore         | 0.00120         | 0.00548         |
+| Knuth-Morris-Pratt  | 0.00301               | 0.00969              |
+| Rabin-Karp          | 0.00569         | 0.02503        |
 
-## Conclusions:
-- Fastest algorithm for the existing substring: 0.00118 sec.
-- Fastest algorithm for the non-existing substring: 0.00557 sec.
-- Overall most efficient algorithm for the given texts: 0.00675 sec.
+## Summary:
+- Fastest algorithm for the existing substring: 0.00120 sec.
+- Fastest algorithm for the non-existing substring: 0.00548 sec.
+- Overall most efficient algorithm for the given texts: 0.00668 sec.
